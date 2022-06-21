@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Advice generator app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        font-family: "Manrope", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background-color: hsl(218, 23%, 16%);
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        background-color: hsl(217, 19%, 24%);
+        padding: 2rem;
+        max-width: min(450px, 100% - 2rem);
+        border-radius: 1rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding-bottom: 4rem;
+      }
+
+      .card > * {
+        text-align: center;
+      }
+
+      .card span {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: hsl(150, 100%, 66%);
+      }
+
+      .card p,
+      .card span#advice {
+        color: hsl(193, 38%, 86%);
+        font-size: 1.5rem;
+      }
+
+      .card button {
+        background: hsl(150, 100%, 66%);
+        border: none;
+        padding: 1.25rem;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -32px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+      }
+
+      .card button:hover {
+        box-shadow: 0 0 1rem hsl(150, 100%, 66%);
+      }
+
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <span
+        >Advice # <span id="adviceId"></span
+        ><!-- Advice ID goes here --></span
+      >
+
+      <p>
+        "<span id="advice"></span>
+        <!-- Advice text goes here -->
+        "
+      </p>
+
+      <svg width="295" height="16" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" fill-rule="evenodd">
+          <path fill="#4F5D74" d="M0 8h122v1H0zM173 8h122v1H173z" />
+          <g transform="translate(138)" fill="#CEE3E9">
+            <rect width="6" height="16" rx="3" />
+            <rect x="14" width="6" height="16" rx="3" />
+          </g>
+        </g>
+      </svg>
+
+      <button onclick="getAdvice()">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20 0H4a4.005 4.005 0 0 0-4 4v16a4.005 4.005 0 0 0 4 4h16a4.005 4.005 0 0 0 4-4V4a4.005 4.005 0 0 0-4-4ZM7.5 18a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"
+            fill="#202733"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://github.com/FachryAfrz">FachryAfrz</a>.
+    </div>
+
+    <!-- API -->
+    <script>
+      const apiUrl = "https://api.adviceslip.com/advice";
+
+      async function getAdvice() {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        document.querySelector("#adviceId").textContent = data.slip.id;
+        document.querySelector("#advice").textContent = data.slip.advice;
+      }
+
+      getAdvice();
+    </script>
+  </body>
+</html>
