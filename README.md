@@ -1,5 +1,7 @@
 # Frontend Mentor - Advice generator app
 
+[Klik ini nih kalo mau liat hasilnye](https://fachryafrz.github.io/FrontendMentor-AdviceGenerator/)
+
 ![Design preview for the Advice generator app coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
