@@ -22,7 +22,7 @@
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
-      * {
+            * {
         font-family: "Manrope", sans-serif;
         margin: 0;
         padding: 0;
@@ -88,6 +88,14 @@
         box-shadow: 0 0 1rem hsl(150, 100%, 66%);
       }
 
+      .card button > svg{
+        transition: transform 0.3s ease;
+      }
+
+      .card button:hover > svg{
+        transform: rotate(45deg);
+      }
+
       .attribution {
         font-size: 11px;
         text-align: center;
@@ -97,6 +105,7 @@
         transform: translateX(-50%);
         color: white;
       }
+
       .attribution a {
         color: hsl(228, 45%, 44%);
       }
